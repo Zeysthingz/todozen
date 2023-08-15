@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import TodoItem
 
 
@@ -7,5 +6,8 @@ from .models import TodoItem
 
 # Create home page view
 def index(request):
-    context = {}
+    queryset = TodoItem.objects.filter(is_completed=False)
+    context = {
+        'queryset': queryset,
+    }
     return render(request, 'todo/todo_list.html', context)

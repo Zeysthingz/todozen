@@ -1,5 +1,13 @@
 {% extends 'core/base.html' %}
 
 {% block container %}
-  <h1>TODO LIST</h1>
+  <ul>
+    {% for todo in queryset %}
+    <li>
+      {{ todo }}
+
+    </li>
+    {% endfor %}
+  </ul>
+
 {% endblock container %}
