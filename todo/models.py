@@ -14,7 +14,7 @@ class Category(models.Model):
 class TodoItem(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL,null=True)
     date_started = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_completed = models.BooleanField(default=False)
