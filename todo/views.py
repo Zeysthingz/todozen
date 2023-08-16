@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import TodoItem
+from django.http import Http404
 
 
 # Create your views here.
@@ -14,9 +15,12 @@ def index(request):
 
 
 def todo_detail(request, id):
-    queryset = TodoItem.objects.get(pk=id)
-    print(queryset)
-    context = {
-        'queryset': queryset,
-    }
-    return render(request, 'todo/todo_detail.html', context)
+    try:
+        queryset = TodoItem.objects.get(pk=id)
+        print(queryset)
+        context = {
+            'queryset': queryset,
+        }
+        return render(request, 'todo/todo_detail.html', context)
+    except TodoItem.DoesNotExist:
+        raise Http404("This task does not exist")
