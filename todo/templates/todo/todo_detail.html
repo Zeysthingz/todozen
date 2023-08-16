@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block container %}
+<!--When Press the button it will return to home page-->
+<!--/ is Home page path-->
+  <a href="/" class="btn btn-outline-info">Home Page</a>
+  <div class="col-sm-6 offset-sm-3">
+    <h1 class="my-3">{{queryset.title }}</h1>
+      <p>
+        {{queryset.content}}
+      </p>
+  </div>
+
+{% endblock container %}

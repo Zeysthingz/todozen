@@ -11,3 +11,12 @@ def index(request):
         'queryset': queryset,
     }
     return render(request, 'todo/todo_list.html', context)
+
+
+def todo_detail(request, id):
+    queryset = TodoItem.objects.get(pk=id)
+    print(queryset)
+    context = {
+        'queryset': queryset,
+    }
+    return render(request, 'todo/todo_detail.html', context)
