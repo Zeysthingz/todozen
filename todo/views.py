@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import TodoItem
+
 from django.http import Http404
 
 
@@ -15,12 +16,8 @@ def index(request):
 
 
 def todo_detail(request, id):
-    try:
-        queryset = TodoItem.objects.get(pk=id)
-        print(queryset)
-        context = {
-            'queryset': queryset,
-        }
-        return render(request, 'todo/todo_detail.html', context)
-    except TodoItem.DoesNotExist:
-        raise Http404("This task does not exist")
+    query = get_object_or_404(TodoItem, pk=id)
+    context = {
+        'query': query,
+    }
+    return render(request, 'todo/todo_detail.html', context)
