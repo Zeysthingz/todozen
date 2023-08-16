@@ -15,6 +15,7 @@ def index(request):
     return render(request, 'todo/todo_list.html', context)
 
 
+# Get items by id from database
 def todo_detail(request, id):
     query = get_object_or_404(TodoItem, pk=id)
     context = {
