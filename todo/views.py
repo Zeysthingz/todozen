@@ -8,7 +8,7 @@ from django.http import Http404
 
 # Create home page view
 def index(request):
-    queryset = TodoItem.objects.filter(is_completed=False)
+    queryset = TodoItem.objects.filter(is_completed=False, user=request.user)
     context = {
         'queryset': queryset,
     }
@@ -17,7 +17,7 @@ def index(request):
 
 # Get items by id from database
 def todo_detail(request, id):
-    query = get_object_or_404(TodoItem, pk=id)
+    query = get_object_or_404(TodoItem, pk=id,user=request.user)
     context = {
         'query': query,
     }
@@ -26,7 +26,7 @@ def todo_detail(request, id):
 
 def category(request, slug):
     category = get_object_or_404(Category, slug=slug)
-    queryset = TodoItem.objects.filter(is_completed=False, category=category)
+    queryset = TodoItem.objects.filter(is_completed=False, category=category, user=request.user)
     context = {
         'queryset': queryset,
         'category': category,
