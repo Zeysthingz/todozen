@@ -1,22 +1,19 @@
 {% extends 'core/base.html' %}
 
 {% block container %}
-<!--When Press the button it will return to home page-->
-<!--/ is Home page path-->
-  <a href="/" class="btn btn-outline-info">Home Page</a>
-  <div class="col-sm-6 offset-sm-3">
-    <h1 class="my-3">{{query.title }}</h1>
-      <p>
-        {{query.content}}
-      </p>
-    <ul>
-      <li>
-        Start Time: {{query.date_started|date:"d/m/Y H:s" }}
-      </li>
-      <li>
-        Updated Time: {{query.updated_at|date:"d/m/Y H:s" }}
-      </li>
-    </ul>
+  <div class="col-sm-6 offset-sm-3 ">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title my-3">{{query.title }}</h5>
+        <h6 class="card-subtitle my-3 text-body-secondary">{{ query.category }}</h6>
+        <p class="card-text my-3">{{query.content}}</p>
+        <ul class="list-unstyled">
+          <li><small>Start Time: {{query.date_started|date:"d/m/Y H:s" }}</small></li>
+          <li><small>Updated Time: {{query.updated_at|date:"d/m/Y H:s" }}</small></li>
+        </ul>
+        <a href="/" class="card-link btn-outline-info text-body-secondary">Home Page</a>
+      </div>
+    </div>
   </div>
 
 {% endblock container %}
