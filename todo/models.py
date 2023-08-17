@@ -1,5 +1,6 @@
 from autoslug import AutoSlugField
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -10,11 +11,18 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse(
+            'category',
+            kwargs={
+                'slug': self.slug
+            }
+        )
 
 class TodoItem(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL,null=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     date_started = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_completed = models.BooleanField(default=False)

@@ -17,7 +17,8 @@
                         {% for category in categories %}
 <!--                        Define Veriable such as {{ category }}-->
                             <li>
-                                <a class="dropdown-item" href="#">{{ category.title }}</a>
+<!--                                Goes to category page-->
+                                <a class="dropdown-item" href="{% url 'category' slug=category.slug%}">{{ category.title }}</a>
                             </li>
                         {% endfor %}
 
