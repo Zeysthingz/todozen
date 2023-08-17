@@ -27,10 +27,12 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = [
         'id',
         'title',
+        'slug',
     ]
     list_display_links = [
         'title',
         'id',
+        'slug'
     ]
 
 

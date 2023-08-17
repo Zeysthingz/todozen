@@ -3,6 +3,9 @@
 {% block container %}
   <div class="col-sm-6 offset-sm-3">
     <h1 class="my-3">TODO LIST</h1>
+      {% if category %}
+         <h2 class="fs-4">Category: {{ category }}</h2>
+      {% endif %}
     <div class="list-group">
           {% for todo in queryset %}
             <a href="{% url 'detail' id=todo.pk %}" class="list-group-item list-group-item-action"> {{ todo.title }}</a>
