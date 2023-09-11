@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import TodoItem, Category
+from .models import TodoItem, Category, Tag
 
 
 # Show the TodoItem model fields in the admin page
@@ -23,6 +23,19 @@ class TodoItemAdmin(admin.ModelAdmin):
     ]
 
 
+class TagAdmin(admin.ModelAdmin):
+    list_display = [
+        'id',
+        'title',
+        'slug',
+        'is_active',
+    ]
+    list_display_links = [
+        'id',
+        'title',
+    ]
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = [
         'id',
@@ -33,8 +46,10 @@ class CategoryAdmin(admin.ModelAdmin):
         'title',
         'id',
         'slug'
+
     ]
 
 
 admin.site.register(TodoItem, TodoItemAdmin)
 admin.site.register(Category, CategoryAdmin)
+admin.site.register(Tag, TagAdmin)

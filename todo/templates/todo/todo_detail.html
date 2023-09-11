@@ -11,6 +11,13 @@
           <li><small>Start Time: {{query.date_started|date:"d/m/Y H:s" }}</small></li>
           <li><small>Updated Time: {{query.updated_at|date:"d/m/Y H:s" }}</small></li>
         </ul>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            {% for item in todo.tag.all %}
+              <span class="badge rounded-pill text-bg-primary">Secondary</span>
+            {% endfor %}
+          </li>
+        </ul>
         <a href="/" class="card-link btn-outline-info text-body-secondary">Home Page</a>
       </div>
     </div>
