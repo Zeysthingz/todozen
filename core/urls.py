@@ -17,10 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from todo.views import index, todo_detail, category
+from core.views import logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    # Add path for logout view
+    path('logout/', logout_view, name='logout'),
     # Add path for todo_detail view with id parameter
     path('todo/<int:id>/', todo_detail, name='detail'),
     path('category/<slug:slug>/', category, name='category'),
